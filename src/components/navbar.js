@@ -1,3 +1,6 @@
+//Componentes são parte do código que funcionam como módulos
+//Todo módulo  é composto pela const módulo, um retorno onde está o conteúdo HTML e o export default módulo
+
 import React from "react";
 
 const NavBar = () => {
@@ -5,7 +8,7 @@ const NavBar = () => {
     return (
         <nav>
             <div>
-                <img src={logoImg} 
+                <img src={logoImg} //A forma de incorporar JavaScript no html é através das chaves {}
                 alt="PokeApi-logo"
                 className="navbar-img"/>
             </div>

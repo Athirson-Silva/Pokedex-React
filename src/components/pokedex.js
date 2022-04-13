@@ -1,6 +1,6 @@
 import React from "react";
 
-const Pokedex = () => {
+const Pokedex = (props) => {
     const{pokemons, loading} = props; //Parametros passados pelo app
 
     return (

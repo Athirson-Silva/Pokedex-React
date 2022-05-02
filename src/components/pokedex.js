@@ -35,9 +35,10 @@ const Pokedex = (props) => {
                                 key={index} 
                                 pokemon={pokemon}
                             />
-                        )
+                        );
                     })}
-                </div>)}
+                </div>
+            )}
         </div>  
     )
 }

@@ -1,27 +1,22 @@
 import React, {useState} from "react";
-import { searchPokemon } from "../api";
 
 const SearchBar = (props) => { //Constantes que fazem uso de componentes do React precisam começar com letras maiúsculas
 
     //const{onSearch} = props; //const onSearch = props.onSearch
     const [search, setSearch] = useState("Ditto");
-    const [pokemon, setPokemon] = useState();
-
+    const {onSearch} = props;
     const onChangeHandler = (ev) => { 
         console.log("pokemon: ", ev.target.value);
         setSearch(ev.target.value); //Indica ao React que ele deve renderizar o componente, por o React trabalha com um Virtual DOM e mudanças no DOM não alteram o Virtual Dom
+        if(ev.target.value.length === 0) {
+            onSearch(undefined)
+        }
     }
 
     const onButtonClickHandler = () => {
-        onSearchHandler(search); 
-
+        onSearch(search); 
     }
 
-    const onSearchHandler = async (pokemon) => {
-        const result = await searchPokemon(pokemon);
-        console.log(result);
-        setPokemon(result);
-    }
     return (
     <div className="searchbar-container">
         <div className="searchbar">
@@ -30,13 +25,6 @@ const SearchBar = (props) => { //Constantes que fazem uso de componentes do Reac
         <div  className="searchbar-btn">
             <button onClick={onButtonClickHandler}>Buscar</button>
         </div>
-        {pokemon ? (
-        <div>
-            <div>Nome: {pokemon.name}</div>
-            <div>Peso: {pokemon.weight}</div>
-            <img src={pokemon.sprites.front_default} alt={pokemon.nome}/>
-        </div>
-    ) : null}
     </div>
      
     );    
